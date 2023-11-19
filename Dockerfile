@@ -1,17 +1,10 @@
-FROM node:18
+FROM python:2.7
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /html
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+COPY index.html ./
 
-RUN npm install
+EXPOSE 3000
 
-COPY . .
-
-EXPOSE 8080
-
-CMD ["node", "server.js"]
+CMD python -m SimpleHTTPServer 3000
